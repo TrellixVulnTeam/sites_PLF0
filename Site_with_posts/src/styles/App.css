@@ -11,8 +11,20 @@
     align-items: center;
 }
 
+.testH1{
+    text-align: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .App {
     width: 800px;
+}
+
+.Comments{
+    width: 800px;
+
 }
 
 .post {
@@ -73,5 +85,11 @@
 
 .navbar__links{
     margin-left: auto;
+}
+
+.comments{
+    margin: 10px 15px;
+    padding: 10px;
+    border: 2px solid teal;
 }
 

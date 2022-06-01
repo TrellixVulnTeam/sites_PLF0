@@ -4,6 +4,8 @@ import {useFetching} from "../hooks/useFetching";
 import PostService from "../API/PostService";
 import Loader from "../components/UI/Loader/Loader";
 
+
+
 const PostIdPage = () => {
     const params = useParams()
     const [post, setPost] = useState({});
@@ -25,18 +27,18 @@ const PostIdPage = () => {
 
 
     return (
-        <div>
-            <h1>Вы попали на страницу поста c id: {params.id}</h1>
+        <div className="Comments">
+            <h1 className="testH1">Вы попали на страницу поста c id: {params.id}</h1>
             {isLoading
                 ? <Loader/>
                 : <div>{post.id}, {post.title}</div>
             }
-            <h1>Комментарии</h1>
+            <h1 className="testH1">Комментарии</h1>
             {isComLoading
                 ? <Loader/>
                 : <div>
                     {comments.map(comm =>
-                        <div key={comm.id} style={{marginTop:15}}>
+                        <div key={comm.id} className= "comments">
                             <h5>{comm.email}</h5>
                             <h5>{comm.body}</h5>
                         </div>)}
