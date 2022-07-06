@@ -1,0 +1,20 @@
+<div *ngIf="messageService.messages.length; else noMessage">
+  <div class="showMess">
+    <h2>Messages</h2>
+    <button (click)="switchShowMess()">Show/Hide Message</button>
+  </div>
+
+  <ng-container *ngIf="showMess">
+
+    <div class="oneMessage"
+         *ngFor="let message of messageService.messages"
+    >{{ message }}</div>
+
+    <button (click)="messageService.clear()">Clear!</button>
+  </ng-container>
+
+</div>
+
+<ng-template #noMessage>
+  <p>There is no messages!</p>
+</ng-template>

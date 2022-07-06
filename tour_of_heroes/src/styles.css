@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #e8cccc;
+}
+
+input {
+  background-color: #e8cccc;
+  border: none;
+  border-bottom: 1px solid black;
+  padding-left: 5px;
+  width: 20%;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #2f2d2d;
+  border-radius: 8px;
+}
+
+.active {
+  background-color: rgba(14, 13, 13, 0.54);
+  border-radius: 8px;
+    -webkit-text-stroke: 1px;
+  -webkit-text-stroke-color: white;
+
+}
+

@@ -1,0 +1,83 @@
+.heroes {
+  margin: 2.5rem 0;
+}
+
+.idName span {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.heroes input {
+  font: normal 17px 'Roboto' sans-serif;
+
+}
+
+.heroes a {
+  margin-bottom: 0.7rem;
+  padding: 6px 5px 5px 0;
+  background-color: #5970c2;
+  color: white;
+  border: 1px solid grey;
+  position: static;
+  width: 150px;
+  text-align: left;
+  border-radius: 5px 0 0 5px;
+  text-decoration: none;
+}
+
+
+.heroes a:hover {
+  transform: scale(105%);
+  background-color: #3149a1;
+  border: 2px solid black;
+  border-radius: 5px;
+
+}
+
+.heroes a:active {
+  background-color: #807a7a;
+  color: #fafafa;
+}
+
+
+.heroes li {
+  display: flex;
+}
+
+ul {
+  padding-inline-start: 0;
+}
+
+
+
+.heroes .badge {
+  display: inline;
+  color: white;
+  padding: 6px 5px 5px 6px;
+  background-color: #3b4b5b;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
+}
+
+.myHeroes {
+  width: 200px;
+}
+
+.myHeroes li {
+  border-right: 1px solid black;
+}
+
+
+.vr {
+  border-left: 1px solid black;
+  height: 400px;
+  display: run-in;
+  left: 30%;
+  top: -400px
+}
+
+.main {
+  display: flex;
+}
+
+

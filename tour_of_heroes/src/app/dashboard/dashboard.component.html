@@ -1,0 +1,10 @@
+<h2>Welcome!</h2>
+<p>There are top heroes, click on some hero for more detail.</p>
+
+<h2 class="top">Top of heroes</h2>
+<div class="heroes">
+<a *ngFor="let hero of heroes"
+   routerLink="/detail/{{hero.id}}">
+  {{hero.name}}
+</a>
+</div>

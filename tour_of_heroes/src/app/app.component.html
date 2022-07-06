@@ -1,0 +1,33 @@
+<div class="body">
+  <h1>{{title}}</h1>
+  <hr>
+  <div *ngIf="authService.isLoggedIn()">
+  <nav class="header">
+    <ul>
+      <li><a
+        routerLinkActive="active"
+        routerLink="/dashboard"
+      >Dashboard </a></li>
+      <li><a
+        routerLinkActive="active"
+        routerLink="/heroes"
+      >Heroes </a></li>
+      <li><a
+        routerLinkActive="active"
+        routerLink="/message"
+      >Messages </a></li>
+      <li><a
+        (click)="logout()"
+        class="login"
+        routerLink="/login"
+      >Logout </a></li>
+    </ul>
+  </nav>
+  <hr>
+  </div>
+<app-hero-detail></app-hero-detail>
+<router-outlet></router-outlet>
+
+</div>
+
+

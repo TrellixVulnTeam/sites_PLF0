@@ -1,0 +1,32 @@
+.second {
+  margin: 50px 0;
+}
+.idName span {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.heroes input {
+  font: normal 17px 'Roboto' sans-serif;
+  width: 15%;
+
+}
+
+.heroes .butt {
+  width: 150px;
+  margin: 1rem 1rem 0 0 ;
+  padding: 6px 5px 6px 5px;
+  background-color: #5970c2;
+  color: white;
+  border: 1px solid grey;
+  position: static;
+  text-align: center;
+  border-radius: 0;
+}
+
+.heroes button:hover {
+  transform: scale(105%);
+  background-color: #3149a1;
+  border: 2px solid black;
+  border-radius: 5px;
+}
