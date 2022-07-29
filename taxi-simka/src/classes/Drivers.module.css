@@ -1,0 +1,75 @@
+.bg {
+    background-image: linear-gradient(#0c76e0, #b2b246);
+    position: relative;
+    color: white;
+    font-size: 16px;
+    padding-bottom: 60px;
+}
+
+.bg p {
+    font-size: 20px;
+}
+
+.list {
+    text-align: start;
+    margin-top: 40px;
+    font-size: 18px;
+    border: 3px solid #4e5def;
+    border-radius: 30px 30px;
+    background-color: rgba(40, 34, 34, 0.25);
+    padding: 20px;
+}
+
+.list dd {
+    padding-left: 15px;
+}
+
+.list dd:first-of-type {
+    margin-top: 15px;
+}
+
+@media screen and (max-width: 424px) {
+    .list {
+        border-radius: 15px 15px;
+        padding: 10px;
+    }
+
+    .list dt, .list dd {
+        font-size: 20px;
+    }
+
+    .bg p {
+        font-size: 22px;
+    }
+}
+
+
+@media screen and (min-width: 1080px)  and (max-width: 1799px) {
+    .list {
+        border-radius: 20px 20px;
+        padding: 15px;
+    }
+
+    .list dt, .list dd {
+        font-size: 20px;
+    }
+
+    .bg p {
+        font-size: 22px;
+    }
+}
+
+@media screen and (min-width: 1800px){
+    .list {
+        border-radius: 30px 30px;
+        padding: 15px;
+    }
+
+    .list dt, .list dd {
+        font-size: 26px;
+    }
+
+    .bg p {
+        font-size: 28px;
+    }
+}

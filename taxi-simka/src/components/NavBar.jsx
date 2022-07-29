@@ -23,6 +23,7 @@ const NavBar = () => {
                 <Nav className='me-auto fs-4 mx-3' style={{color: 'white'}}>
                     <Nav.Link className={classes.navText} href='/'>Головна</Nav.Link>
                     <Nav.Link className={classes.navText} href='/tariff'>Тарифи</Nav.Link>
+                    <Nav.Link className={classes.navText} href='/drivers'>Вакансії</Nav.Link>
                     <Nav.Link className={classes.navText} href='/contacts'>Контакти</Nav.Link>
                     <Nav.Link className={classes.navText} href='/about'>Про нас</Nav.Link>
                 </Nav>
