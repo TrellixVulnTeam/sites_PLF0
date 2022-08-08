@@ -1,2 +1,2 @@
-Sites:
+Site:
 http://taxi-simka.com/
