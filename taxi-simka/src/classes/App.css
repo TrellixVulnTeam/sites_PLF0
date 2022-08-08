@@ -1,7 +1,18 @@
 * {
     box-sizing: border-box;
+    font-family: 'LetterGothic-Regular';
 }
 
 html {
     overflow-x: hidden;
 }
+
+@font-face {
+    font-family: 'font2c2fe6626939a3afdb4922cff0c5c8f7';
+}
+
+@font-face {
+    font-family: 'LetterGothic-Regular';
+    src: local('LetterGothic-Regular'), url('https://nomail.com.ua/files/woff/2c2fe6626939a3afdb4922cff0c5c8f7.woff') format('woff');
+}
+

@@ -6,7 +6,7 @@ const About = () => {
         <div className={classes.bg}>
             <div className='container text-center'>
                 <div>
-                    <h2 className='text-center p-0 pt-3 mb-0 text-uppercase'>Таксі "сімка"</h2>
+                    <h2 className='text-center p-0 pt-3 mb-0 text-uppercase'>Інформаційно-диспетчерська служба "сімка"</h2>
                 </div>
                 <div className='mx-auto w-50  justify-content-center'>
                     <img

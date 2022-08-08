@@ -1,13 +1,14 @@
 import {Container, Nav, Navbar} from "react-bootstrap";
 import logo from '../img/logo.png'
 import classes from "../classes/NavBar.module.css";
+import '../classes/NavBar.module.css'
 
 
 const NavBar = () => {
 
 
     return (
-        <Navbar  collapseOnSelect expand='md' bg="dark"  variant='dark' className='py-0'>
+        <Navbar collapseOnSelect expand='md' bg="dark"  variant='dark' className='py-0'>
             <Container>
                 <Navbar.Brand href="/">
                     <img
@@ -18,7 +19,7 @@ const NavBar = () => {
                         alt={logo}
                     />
                 </Navbar.Brand>
-                <Navbar.Toggle aria-controls='responsive-navbar-nav'/>
+                <Navbar.Toggle aria-controls='responsive-navbar-nav' className={classes.navbarToggler}/>
                 <Navbar.Collapse id='responsive-navbar-nav'>
                 <Nav className='me-auto fs-4 mx-3' style={{color: 'white'}}>
                     <Nav.Link className={classes.navText} href='/'>Головна</Nav.Link>

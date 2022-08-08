@@ -2,7 +2,7 @@
     background-image: linear-gradient(#0c76e0, #b2b246);
     position: relative;
     color: white;
-    font-size: 16px;
+    font-size: 20px;
     padding-bottom: 60px;
 }
 
@@ -17,15 +17,11 @@ form {
     padding: 64px;
     border-radius: 10px;
     box-shadow: 0 4px 32px #000000;
-    font-family: sans-serif;
-    letter-spacing: 1px;
 }
 
 form input,
 form button {
-    font-family: sans-serif;
-    letter-spacing: 1px;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .formGroup {
@@ -122,8 +118,92 @@ form a:hover {
     color: #2e81c7;
 }
 
+
+.buttons Button {
+    width: 100%;
+    padding: 0 20px;
+    font-size: 20px;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    color: white;
+    border: 1px solid #252323F;
+    border-radius: 15px;
+    background-color: rgb(35, 104, 164);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.buttons Button:hover {
+    background-color: rgba(70, 95, 162, 0.79);
+    transition: background-color .2s;
+}
+
+.buttons Button:active,
+.buttons Button:focus {
+    background-color: rgba(3, 42, 87, 0.79);
+    border-color: black;
+    box-shadow: none;
+}
+
+.buttons img {
+    transform: rotate(90deg);
+}
+
+.buttons span {
+    margin-bottom: 5px;
+    margin-top: -10px;
+}
+
+.formGroup select {
+    background-color: rgba(255, 255, 255, 0.73);
+    color: #06123a;
+}
+
+.forCards {
+    margin-top: 7px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 19%;
+    max-width: 100%;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.box {
+    width: 100%;
+    height: 80px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 510px){
     form {
         padding: 20px;
     }
+
+    .box {
+        height: 60px;
+    }
+}
+
+
+@media screen and (max-width: 768px){
+    .buttons button {
+        padding: 20px 5px!important;
+        margin: 10px 0;
+    }
+}
+
+.boxActive{
+    background-color: rgba(208, 193, 193, 0.78) !important;
+    color: black!important;
+    border: 2px solid green!important;
+    box-shadow: green 0 0 11px !important;
 }

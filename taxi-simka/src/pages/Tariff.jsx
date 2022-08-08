@@ -1,13 +1,10 @@
 import React, {useState} from 'react';
 import classes from '../classes/Tariff.module.css'
-import {standart, universal, driver, delivery} from "../service/tarifs";
+import {standart, universal, driver, delivery, miniven, tech} from "../service/tarifs";
 
 
 const Tariff = () => {
     let [car, setCar] = useState(standart)
-    if (car === driver) {
-
-    }
 
     return (
         <div className={classes.bodyBg}>
@@ -43,9 +40,9 @@ const Tariff = () => {
                             <div className="col-md-3 col-6 mb-3 my-md-4 my-2">
                                 <span className={classes.numbers}>{car.minVid}</span>
                                 <div>
-                                    <span className={classes.desc}>мінімальна
+                                    <span className={classes.desc}>відстань
                                     <br/></span>
-                                    <span className={classes.desc}>відстань, km
+                                    <span className={classes.desc}>до, км
                                     <br/></span>
                                 </div>
                             </div>
@@ -53,7 +50,7 @@ const Tariff = () => {
                             <div className="col-md-3 col-6 mb-3 my-md-4">
                                 <span className={classes.numbers}>{car.varPoMist} </span>
                                 <div>
-                                    <span className={classes.desc}>вартість за km
+                                    <span className={classes.desc}>вартість за км
                                     <br/></span>
                                     <span className={classes.desc}>по місту, грн
                                     <br/></span>
@@ -63,7 +60,7 @@ const Tariff = () => {
                             <div className="col-md-3 col-6 mb-3 my-md-4">
                                 <span className={classes.numbers}>{car.varZaMist} </span>
                                 <div>
-                                    <span className={classes.desc}>вартість за km
+                                    <span className={classes.desc}>вартість за км
                                     <br/></span>
                                     <span className={classes.desc}>за містом, грн
                                     <br/></span>
@@ -85,7 +82,7 @@ const Tariff = () => {
                                 <div>
                                     <span className={classes.desc}>вартість
                                     <br/></span>
-                                    <span className={classes.desc}>простою, грн\хв
+                                    <span className={classes.desc}>простою, грн/хв
                                     <br/></span>
                                 </div>
                             </div>
@@ -101,11 +98,11 @@ const Tariff = () => {
                             </div>
 
                             <div className="col-md-3 col-6 mb-5">
-                                <span className={classes.numbers}>+20</span>
+                                <span className={classes.numbers}>+{car.value1}</span>
                                 <div>
-                                    <span className={classes.desc}>вартість до тарифу
+                                    <span className={classes.desc}>{car.desc1}
                                     <br/></span>
-                                    <span className={classes.desc}>за кожну тварину, грн
+                                    <span className={classes.desc}>{car.desc2}
                                     <br/></span>
                                 </div>
                             </div>
@@ -115,17 +112,23 @@ const Tariff = () => {
 
                     <div className={classes.buttons}>
                         <div className="row">
-                            <div className="col-md-3 col-6">
+                            <div className="col-md-4 col-6">
                                 <button onClick={() => setCar(car = standart)}>Стандарт</button>
                             </div>
-                            <div className="col-md-3 col-6">
+                            <div className="col-md-4 col-6">
                                 <button onClick={() => setCar(car = universal)}>Універсал</button>
                             </div>
-                            <div className="col-md-3 col-6">
+                            <div className="col-md-4 col-6">
+                                <button onClick={() => setCar(car = miniven)}>Мінівен</button>
+                            </div>
+                            <div className="col-md-4 col-6">
                                 <button onClick={() => setCar(car = driver)}>Драйвер</button>
                             </div>
-                            <div className="col-md-3 col-6">
+                            <div className="col-md-4 col-6">
                                 <button onClick={() => setCar(car = delivery)}>Доставка</button>
+                            </div>
+                            <div className="col-md-4 col-6">
+                                <button onClick={() => setCar(car = tech)}>Техпідтримка</button>
                             </div>
                         </div>
                     </div>

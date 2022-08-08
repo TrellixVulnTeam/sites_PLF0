@@ -6,11 +6,11 @@
     background-repeat: no-repeat;
     background-size: 0 2px;
     transition: background-size .3s;
-    padding: 20px!important;
+    padding: 20px !important;
 }
 
 
-.navText:hover  {
+.navText:hover {
     color: white;
     background-size: 100% 2px;
 }
@@ -18,6 +18,16 @@
 
 .navText:active {
     color: rgb(255, 243, 0);
+}
+
+.navbarToggler {
+    border: 2px solid yellow;
+    background-image: url("data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%27 -10 0 52 30%27><path stroke=%27rgba%288, 37, 231, 1%29%27 stroke-linecap=%27round%27 stroke-miterlimit=%2710%27 stroke-width=%272%27 d=%27M4 7h22M4 15h22M4 23h22%27/></svg>");
+    display: inline-block;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
 }
 
 
