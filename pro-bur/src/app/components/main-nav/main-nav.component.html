@@ -1,0 +1,52 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer
+               class="sidenav"
+               fixedInViewport
+               [ngClass]="{hidden: !(isHandset$ | async)}"
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink='/home'>Головна</a>
+      <a mat-list-item routerLink='/service'>Послуги</a>
+      <a mat-list-item routerLink='/gallery'>Галерея</a>
+      <a mat-list-item routerLink='/about'>Про нас</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" >
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <div class="myOwn d-flex">
+        <a
+          style="font-weight: 500"
+          routerLink="/home"
+        >
+          <span><img
+            src="../../../assets/img/logo.png"
+            width="58px"
+            height="58px"
+            alt="Logo"
+          >
+            PRO-BUR</span></a>
+        <div
+          *ngIf="!(isHandset$ | async)"
+          class="d-flex px-3"
+        >
+          <a routerLink='/home'>Головна</a>
+          <a routerLink='/service'>Послуги</a>
+          <a routerLink='/gallery'>Галерея</a>
+          <a routerLink='/about'>Про нас</a>
+        </div>
+      </div>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

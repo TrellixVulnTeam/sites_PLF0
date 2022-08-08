@@ -1,0 +1,73 @@
+.backG {
+  background: linear-gradient(0.25turn, rgba(63, 135, 166, 0.75),  rgba(246, 157, 60, 0.71));
+  color: white;
+  padding-bottom: 20px;
+  min-height: 80vh;
+
+  h1 {
+    margin-bottom: 60px;
+    font-size: 32px;
+    font-weight: 500;
+    color: #efe7e7;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 0 #000000;
+    position: relative;
+
+    &:after {
+      position: absolute;
+      content: "";
+      background: linear-gradient(to right, rgba(21, 112, 211, 0.7) 0%, #526cd9 100%);
+      height: 4px;
+      width: 70px;
+      margin-left: -35px;
+      bottom: -12px;
+      left: 50%;
+    }
+  }
+}
+
+.photoAndText {
+  display: flex;
+  padding: 20px;
+  border: rgba(40, 51, 121, 0.7) 2px solid;
+  border-radius: 25px;
+  background-color: rgba(73, 68, 68, 0.4);
+}
+
+.photo {
+  margin-right: 15px;
+
+  img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+  }
+}
+
+.feedbackText {
+  text-align: start;
+  p {
+    font-size: 15px;
+    font-weight: 300;
+    text-align: start;
+    font-style: italic;
+
+    &:before {
+      content: '“';
+      font-weight: 500;
+
+    }
+
+    &:after {
+      content: '“';
+      font-weight: 500;
+    }
+  }
+
+  span {
+    font-weight: 500;
+    font-size: 17px;
+    color: #1e1d1d;
+  }
+}
+

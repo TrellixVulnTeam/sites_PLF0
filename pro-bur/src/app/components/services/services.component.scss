@@ -1,0 +1,84 @@
+.backG {
+  background: linear-gradient(0.5turn, rgba(252, 252, 252, 0.75), rgba(122, 116, 112, 0.81));
+  color: rgba(75, 74, 74, 0.94);
+;
+
+  h2 {
+    margin-bottom: 60px;
+    font-size: 36px;
+    font-weight: 400;
+    text-transform: uppercase;
+    position: relative;
+  }
+}
+
+.serviceDesc {
+  font-family: "Raleway", sans-serif;
+
+  dt {
+    font-size: 26px;
+  }
+
+  .list {
+    font-weight: 400;
+    font-size: 22px;
+    text-align: start;
+    border: 3px solid rgba(78, 93, 239, 0.63);
+    border-radius: 30px 30px;
+    background-color: rgba(40, 34, 34, 0.1);
+    padding: 25px;
+
+
+    &:last-of-type {
+      margin-top: 50px;
+    }
+
+    &:first-of-type {
+      padding-top: 5px;
+    }
+
+    dd {
+      padding: 5px 0;
+
+      &:first-of-type {
+        margin-top: 20px;
+      }
+      i {
+        color: lime;
+        font-size:28px;
+        margin-right: 10px;
+      }
+
+    }
+  }
+}
+
+@media screen and (max-width: 450px){
+  .serviceDesc {
+
+    .list {
+      font-size: 18px;
+      border-radius: 10px;
+      padding: 12px;
+
+
+      &:last-of-type {
+        margin-top: 50px;
+      }
+
+      dd {
+        padding: 5px 0;
+
+        &:first-of-type {
+          margin-top: 20px;
+        }
+        i {
+          color: lime;
+          font-size:28px;
+          margin-right: 10px;
+        }
+
+      }
+    }
+  }
+}
