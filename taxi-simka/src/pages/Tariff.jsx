@@ -1,15 +1,17 @@
 import React, {useState} from 'react';
 import classes from '../classes/Tariff.module.css'
 import {standart, universal, driver, delivery, miniven, tech} from "../service/tarifs";
+import {useTranslation} from "react-i18next";
 
 
 const Tariff = () => {
     let [car, setCar] = useState(standart)
+    const {t} = useTranslation()
 
     return (
         <div className={classes.bodyBg}>
             <div className="container border-dark">
-                <h1 className='text-center fw-bold'>Вартість та класи авто</h1>
+                <h1 className='text-center fw-bold'>{t('tariff_name')}</h1>
                 <div className={classes.boxChoise}>
                     <div className={classes.header}>
                         <img
@@ -116,10 +118,10 @@ const Tariff = () => {
                                 <button onClick={() => setCar(car = standart)}>Стандарт</button>
                             </div>
                             <div className="col-md-4 col-6">
-                                <button onClick={() => setCar(car = universal)}>Універсал</button>
+                                <button onClick={() => setCar(car = universal)}>{t('tariff_universal')}</button>
                             </div>
                             <div className="col-md-4 col-6">
-                                <button onClick={() => setCar(car = miniven)}>Мінівен</button>
+                                <button onClick={() => setCar(car = miniven)}>{t('tariff_miniven')}</button>
                             </div>
                             <div className="col-md-4 col-6">
                                 <button onClick={() => setCar(car = driver)}>Драйвер</button>
@@ -128,12 +130,12 @@ const Tariff = () => {
                                 <button onClick={() => setCar(car = delivery)}>Доставка</button>
                             </div>
                             <div className="col-md-4 col-6">
-                                <button onClick={() => setCar(car = tech)}>Техпідтримка</button>
+                                <button onClick={() => setCar(car = tech)}>{t('tariff_tech')}</button>
                             </div>
                         </div>
                     </div>
                     <div className='pb-5 fw-bold fs-2'>
-                        <span> Оберіть тип вище для перегляду цін</span>
+                        <span> {t('tariff_type')}</span>
                     </div>
                 </div>
             </div>

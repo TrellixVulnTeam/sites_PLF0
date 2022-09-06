@@ -1,12 +1,14 @@
 import classes from "../classes/About.module.css";
 import big_logo from "../img/big_logo.png";
+import {useTranslation} from "react-i18next";
 
 const About = () => {
+    const {t} = useTranslation()
     return (
         <div className={classes.bg}>
             <div className='container text-center'>
                 <div>
-                    <h2 className='text-center p-0 pt-3 mb-0 text-uppercase'>Інформаційно-диспетчерська служба "сімка"</h2>
+                    <h2 className='text-center p-0 pt-3 mb-0 text-uppercase'>{t('about_name')}</h2>
                 </div>
                 <div className='mx-auto w-50  justify-content-center'>
                     <img
@@ -15,10 +17,7 @@ const About = () => {
                         alt="Logo"/>
                 </div>
                 <div className={classes.firstP}>
-                    <p>В ці надскладні часи, коли рашистський окупант, ганебно намагається вторгнутися на нашу рідну
-                        землю, нещадно бомбить наші міста та вбиває наших мирних побратимів, наша команда працює на
-                        своєму фронті. Незважаючи на практичну відсутність та захмарну ціну на паливо, наші водії
-                        знаходять вихід, та все одно добросовісно виконують свою роботу.</p>
+                    <p>{t('about_desk')} </p>
                 </div>
                 <div className={classes.allFor}>
                     <div className="row ">
@@ -34,10 +33,8 @@ const About = () => {
                                 margin: 'auto'
                             }}></i>
                             <div className={classes.serviceDesc}>
-                                <h3>Мобільний додаток</h3>
-                                <p>Мобільний та досить зручний додаток за допомогою якого кожен може замовити собі авто
-                                    без
-                                    дзвінка оператору. Завантажити додаток можна в Play Market</p>
+                                <h3>{t('about_mobile')}</h3>
+                                <p>{t('about_desk_mobile')}</p>
                             </div>
                         </div>
                         <div className="col-md-4 my-3">
@@ -52,10 +49,8 @@ const About = () => {
                                 margin: 'auto'
                             }}></i>
                             <div className={classes.serviceDesc}>
-                                <h3>Попередні замовлення</h3>
-                                <p>Перевага попередніх замовлень в тому, що замовляючи авто заздалегідь ви можете бути
-                                    впевненні в тому, що авто вас буде чекати саме в той час, на який ви його
-                                    замовили</p>
+                                <h3>{t('about_popered')}</h3>
+                                <p>{t('about_popered_desk')}</p>
                             </div>
                         </div>
                         <div className="col-md-4 my-3">
@@ -70,9 +65,8 @@ const About = () => {
                                 margin: 'auto'
                             }}></i>
                             <div className={classes.serviceDesc}>
-                                <h3>Послуги драйвера</h3>
-                                <p>Надаємо послуги драйвера (наш водій доставить вас на вашому авто за вказаною
-                                    адресою)</p>
+                                <h3>{t('about_driver')}</h3>
+                                <p>{t('about_driver_desk')}</p>
                             </div>
                         </div>
                         <div className="col-md-4 my-3">
@@ -87,8 +81,8 @@ const About = () => {
                                 margin: 'auto'
                             }}></i>
                             <div className={classes.serviceDesc}>
-                                <h3>Послуги з технічної підтримки</h3>
-                                <p>Надаємо послуги з технічної підтримки («прикурювання», доставка палива та інше)</p>
+                                <h3>{t('about_tech')}</h3>
+                                <p>{t('about_tech_desk')}</p>
                             </div>
                         </div>
                         <div className="col-md-4 my-3">
@@ -103,8 +97,8 @@ const About = () => {
                                 margin: 'auto'
                             }}></i>
                             <div className={classes.serviceDesc}>
-                                <h3>Програма лояльності та система знижок</h3>
-                                <p>Можливість розрахування банківською карткою</p>
+                                <h3>{t('about_loyal')}</h3>
+                                <p>{t('about_loyal_desk')}</p>
                             </div>
                         </div>
                         <div className="col-md-4 my-3">
@@ -119,8 +113,8 @@ const About = () => {
                                 margin: 'auto'
                             }}></i>
                             <div className={classes.serviceDesc}>
-                                <h3>Послуги доставки</h3>
-                                <p>Надаємо послуги доставки товарів та документів</p>
+                                <h3>{t('about_delivery')}</h3>
+                                <p>{t('about_delivery_desk')}</p>
                             </div>
                         </div>
 

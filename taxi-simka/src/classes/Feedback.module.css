@@ -207,3 +207,10 @@ form a:hover {
     border: 2px solid green!important;
     box-shadow: green 0 0 11px !important;
 }
+
+.preview {
+    display: flex;
+    flex-wrap: wrap;
+    padding: .5rem;
+    padding-left: 0;
+}

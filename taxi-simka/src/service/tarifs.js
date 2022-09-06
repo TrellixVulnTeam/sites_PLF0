@@ -4,6 +4,10 @@ import deliveryCar from '../img/class_express.png'
 import driverCar from '../img/class_driver.png'
 import minivanCar from '../img/class_minivan.png'
 import techCar from '../img/class_tech.png'
+import i18n from "../i18n";
+
+
+
 
 export const standart = {
     img: standartCar,

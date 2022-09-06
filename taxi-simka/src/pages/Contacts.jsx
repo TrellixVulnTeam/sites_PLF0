@@ -4,20 +4,22 @@ import life from '../img/lifecell_logo.png'
 import kyivstar from '../img/kyivstar_icon.png'
 
 import google from "../img/google_play.png";
+import {useTranslation} from "react-i18next";
 
 const Contacts = () => {
+    const {t} = useTranslation()
     return (
         <section className={classes.bgImgVas}>
             <div className={classes.positionCenter}>
                 <div className="container">
                     <div className={classes.text}>
-                        <h1>Наші контакти</h1>
+                        <h1>{t('contact_our')}</h1>
                     </div>
                     <div className="row">
                         <div className='col-md-4 col-12 '>
                             <div className='text-center border border-2 border-white rounded p-2 my-md-4 my-3'>
                                 <div className={classes.blocks}>
-                                    <h3 className=''>Телефон</h3>
+                                    <h3 className=''>{t('contact_mobile')}</h3>
                                     <div className={classes.mobiles}>
                                         <a className='link-light text-decoration-none' href='tel:0932237070'><p
                                             className='flex'>
@@ -55,7 +57,7 @@ const Contacts = () => {
                         <div className="col-md-4 col-12">
                             <div className='text-center border border-2 border-white rounded  p-2 my-md-4 my-3 '>
                                 <div className={classes.blocks}>
-                                    <h3 className=''>Пошта</h3>
+                                    <h3 className=''>{t('contact_mail')}</h3>
                                     <div className={classes.mobiles}>
                                         <p className='flex fbo'>
                                             <a href='mailto: taxisimk@taxi-simka.com' style={{color: 'white'}}><i
@@ -64,7 +66,7 @@ const Contacts = () => {
                                         </p>
                                     </div>
                                     <div className={classes.imgGoogle}>
-                                        <p>Додаток:</p>
+                                        <p>{t('contact_app')}:</p>
                                         <a href='https://play.google.com/store/apps/details?id=ua.taxisimka'>
                                             <img
                                                 className='img-fluid'
@@ -78,7 +80,7 @@ const Contacts = () => {
                         <div className="col-md-4 col-12">
                             <div className='text-center border border-2 border-white rounded  p-2 my-md-4 my-3 '>
                                 <div className={classes.blocks}>
-                                    <h3 className=''>Відділ якості </h3>
+                                    <h3 className=''>{t('contact_quality')}</h3>
                                     <div className={classes.mobiles2}>
                                         <a className='link-light text-decoration-none fs-4' href='tel: 0634952545'><p
                                             className='flex'><br/>
@@ -91,7 +93,7 @@ const Contacts = () => {
                         </div>
                     </div>
                     <div className="text-center pb-4">
-                        <h4>Працюємо з 5.00 до 23.00</h4>
+                        <h4>{t('contact_time')}</h4>
                     </div>
                 </div>
             </div>

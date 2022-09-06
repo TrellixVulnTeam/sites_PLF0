@@ -6,14 +6,19 @@ import '../classes/Feedback.module.css'
 import {delivery, driver, standart, universal} from "../service/tarifs";
 import {Button} from "react-bootstrap";
 import InputMask from 'react-input-mask'
+import {upload, last} from "../service/upload.js";
 
 const SERVICE_ID = "taxi-simka";
 const TEMPLATE_ID = "template_a0wm0pl";
 const USER_ID = "iNXJWN7ii38WJWgYa";
-
+setTimeout(()=>upload('#file', {
+    multi: true,
+    accept: ['.png', '.jpg', '.jpeg', '.gif']
+}), 1000)
 
 const Feedback = () => {
 
+        const [arrForSend, setArrForSend] = useState(last)
         const [currentCar, setCurrentCar] = useState('');
         const [surnameInput, setSurnameInput] = useState('');
         const [urlOnFolder, setUrlOnFolder] = useState('');
@@ -75,14 +80,15 @@ const Feedback = () => {
 
         async function guardarArchivo(e) {
             setLoading(true)
-            let files = e.target.files
+            let files = arrForSend
             for (let i = 0; i < files.length; i++) {
                 if (i === 1) {
                     await sleep(2000)
                 }
-                let file = e.target.files[i] //the file
+                console.log(files)
+                let file = files[i] //the file
                 let reader = new FileReader() //this for convert to Base64
-                reader.readAsDataURL(e.target.files[i]) //start conversion...
+                reader.readAsDataURL(files[i]) //start conversion...
                 reader.onload = function (e) { //.. once finished..
                     let rawLog = reader.result.split(',')[1]; //extract only thee file data part
                     let dataSend = {
@@ -94,21 +100,21 @@ const Feedback = () => {
                         },
                         fname: "uploadFilesToGoogleDrive"
                     }; //preapre info to send to API
-                    fetch('https://script.google.com/macros/s/AKfycbyv93E5DtAWx0icgEwUeKFvK2WuyyTZQRzUcjTw2eZkFddXBC3RCHFPAGn5DjXvn8-fiQ/exec', //your AppsScript URL
-                        {
-                            method: "POST",
-                            body: JSON.stringify(dataSend)
-                        }) //send to Api
-                        .then(res => res.json()).then((a) => {
-                        if (files.length - i === 1) {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Всі файли прикріленно!'
-                            })
-                            setUrlOnFolder(a);
-                            setLoading(false)
-                        }
-                    }).catch(e => console.log(e))
+                    fetch('https://script.google.com/macros/s/AKfycbyv93E5DtAWx0icgEwUeKFvK2WuyyTZQRzUcjTw2eZkFddXBC3RCHFPAGn5DjXvn8-fiQ/exec',
+                         {
+                             method: "POST",
+                             body: JSON.stringify(dataSend)
+                         }) //send to Api
+                         .then(res => res.json()).then((a) => {
+                         if (files.length - i === 1) {
+                             Swal.fire({
+                                 icon: 'success',
+                                 title: 'Всі файли прикріленно!'
+                             })
+                             setUrlOnFolder(a);
+                             setLoading(false)
+                         }
+                     }).catch(e => console.log(e))
                 }
             }
         }
@@ -142,7 +148,6 @@ const Feedback = () => {
                             <form onSubmit={handleOnSubmit} className={classes.myForm}>
                                 <h1 className='text-center' style={{color: '#d0d0d9', marginBottom: '64px'}}>Заява на
                                     вакансію водія</h1>
-
                                 <p className={classes.formGroup}>
                                     <label>Прізвище: <span style={{color: "#ff0101"}}>*</span></label>
                                     <input type="text"
@@ -382,23 +387,40 @@ const Feedback = () => {
                                     </label><br/>
                                     <br/>
 
+
                                     <input type="file"
-                                           multiple
-                                           accept="image"
-                                           id="customFile"
-                                        // className='pb-5'
-                                           onClick={replaceSur}
-                                           onChange={(e) => guardarArchivo(e)}
-                                           required
+                                           id="file"
+                                           style={{display: 'none'}}
+                                           capture="user"
+                                           onChange={()=>{setArrForSend(last); console.log(arrForSend)}}
                                     />
+
+                                    <button
+                                        disabled={arrForSend.length === 0}
+                                        onClick={(e) => {
+                                        guardarArchivo(e);
+                                        replaceSur(e); console.log(arrForSend)}
+                                    } style={{width: '138px'}}>Прикріпити</button>
+
+                                    {/*<input type="file"*/}
+                                    {/*       multiple*/}
+                                    {/*       accept="image"*/}
+                                    {/*       capture="user"*/}
+                                    {/*       id="customFile"*/}
+                                    {/*       onClick={replaceSur}*/}
+                                    {/*       onChange={(e) => guardarArchivo(e)}*/}
+                                    {/*       required*/}
+                                    {/*/>*/}
+
                                     {
                                         loading
                                             ?
-                                            <div className="spinner-border m-3" role="status">
+                                            <div className="spinner-border mx-2 py-2" role="status">
                                                 <span className="visually-hidden">Loading...</span>
                                             </div>
                                             : <div></div>
                                     }
+
                                 </div>
 
                                 <p className={classes.formGroup}>
@@ -411,7 +433,7 @@ const Feedback = () => {
                                 </p>
 
 
-                                <Button type='submit' disabled={!urlOnFolder || !currentCar}>Відправити</Button>
+                                <Button type='submit' disabled={!surnameInput}>Відправити</Button>
                                 <h6 style={{color: '#21252a', fontWeight: 'bold', margin: '16px 0px'}}>( * поля обов’язкові
                                     для заповнення )</h6>
                                 <h4 className='text-center pt-5' style={{color: '#0d6cfb'}}>За додатковою інформацією
