@@ -2,66 +2,77 @@ import React from 'react';
 import classes from "../classes/Drivers.module.css";
 import google from "../img/google_play.png";
 import {Button, Nav} from "react-bootstrap";
+import {useTranslation} from "react-i18next";
 
 const Drivers = () => {
+    const {t} = useTranslation()
     return (
         <div className={classes.bg}>
             <div className="container text-center">
                 <div className='text-center p-0 pt-5 mb-0'>
-                    <p>Компанія ІДС «Сімка» пропонує співпрацю водіям з власним авто. Заробляти з нами легко та просто.
-                        Ідеальним кандидатом є людина, яка знає специфіку цієї діяльності і має досвід приватного
-                        перевезення або роботу в інших службах . Звичайно, водій повинен добре орієнтуватися в місті,
-                        щоб,
-                        вибираючи оптимальний маршрут руху, економити свій час та час клієнта.
+                    <p>{t('drivers_first_name')}
                     </p>
                 </div>
                 <div className={classes.list}>
-                    <dt>Умови роботи:</dt>
-                    <dd><i className="bi bi-check" style={{color: 'lime', fontSize:'25px' , marginRight: '10px'}}></i>Вільний
-                        графік
+                    <dt>{t('drivers_conditions')}</dt>
+                    <dd><i className="bi bi-check"
+                           style={{color: 'lime', fontSize: '25px', marginRight: '10px'}}></i> {t('drivers_grafik')}
                     </dd>
-                    <dd><i className="bi bi-check" style={{color: 'lime', fontSize:'25px' , marginRight: '10px'}}></i>Вільний вибір
-                        різних категорій додаткових послуг
+                    <dd><i className="bi bi-check"
+                           style={{color: 'lime', fontSize: '25px', marginRight: '10px'}}></i> {t('drivers_dopposlug')}
                     </dd>
-                    <dd><i className="bi bi-check" style={{color: 'lime', fontSize:'25px' , marginRight: '10px'}}></i>Секторальна
-                        черга (фільтр, за допомогою якого водій може працювати у бажаних районах міста в порядку черги)
+                    <dd><i className="bi bi-check"
+                           style={{color: 'lime', fontSize: '25px', marginRight: '10px'}}></i> {t('drivers_queue')}
                     </dd>
-                    <dd><i className="bi bi-check" style={{color: 'lime', fontSize:'25px' , marginRight: '10px'}}></i>Графік
-                        чергування (черговий водій має пріоритет в порядку отримання замовлень)
+                    <dd><i className="bi bi-check"
+                           style={{color: 'lime', fontSize: '25px', marginRight: '10px'}}></i> {t('drivers_grafgueue')}
                     </dd>
-                    <dd><i className="bi bi-check" style={{color: 'lime', fontSize:'25px' , marginRight: '10px'}}></i>Комфортні
-                        умови роботи з мобільним додатком
+                    <dd><i className="bi bi-check"
+                           style={{color: 'lime', fontSize: '25px', marginRight: '10px'}}></i> {t('drivers_comfort')}
                     </dd>
-                    <dd><i className="bi bi-check" style={{color: 'lime', fontSize:'25px' , marginRight: '10px'}}></i>Низькі та
-                        «чисті» комісійні за замовлення
+                    <dd><i className="bi bi-check"
+                           style={{color: 'lime', fontSize: '25px', marginRight: '10px'}}></i> {t('drivers_lowcomm')}
                     </dd>
-                    <dd><i className="bi bi-check" style={{color: 'lime', fontSize:'25px' , marginRight: '10px'}}></i>Можливість
-                        вибору – підробіток, або стабільний дохід
+                    <dd><i className="bi bi-check"
+                           style={{color: 'lime', fontSize: '25px', marginRight: '10px'}}></i> {t('drivers_choise')}
                     </dd>
                 </div>
 
                 <div className={classes.list}>
-                    <dt>Вимоги до водія:</dt>
-                    <dd><i className="bi bi-check" style={{color: 'lime', fontSize:'25px' , marginRight: '10px'}}></i>Громадянин
-                        України, вік від 20 років. Досвід водіння від 2-х років. Наявність водійського посвідчення
-                        категорії "В"
+                    <dt>{t('drivers_requirements')}</dt>
+                    <dd><i className="bi bi-check"
+                           style={{color: 'lime', fontSize: '25px', marginRight: '10px'}}></i> {t('drivers_age')}
                     </dd>
-                    <dd><i className="bi bi-check" style={{color: 'lime', fontSize:'25px' , marginRight: '10px'}}></i>Наявність
-                        авто від 2005 р.в. класу не нижче «Ланос» (Автомобіль повинен бути чистий, цілий та технічно
-                        справний. Не допускається наявність наліпок інших служб таксі. Обов'язковим є наявність
-                        страхового полісу на авто)
+                    <dd><i className="bi bi-check"
+                           style={{color: 'lime', fontSize: '25px', marginRight: '10px'}}></i> {t('drivers_auto')}
                     </dd>
-                    <dd><i className="bi bi-check" style={{color: 'lime', fontSize:'25px' , marginRight: '10px'}}></i>Наявність мобільного телефону на базі ОС Android вище v. 5.1.</dd>
-                    <dd><i className="bi bi-check" style={{color: 'lime', fontSize:'25px' , marginRight: '10px'}}></i>Досвід роботи в таксі (необов’язково, але перевага надається водіям з досвідом)</dd>
-                    <dd><i className="bi bi-check" style={{color: 'lime', fontSize:'25px' , marginRight: '10px'}}></i>Знання міста та прилеглих поселень</dd>
-                    <dd><i className="bi bi-check" style={{color: 'lime', fontSize:'25px' , marginRight: '10px'}}></i>Вміння користуватися мобільними додатками (робоча програма, навігатор та ін.) </dd>
-                    <dd><i className="bi bi-check" style={{color: 'lime', fontSize:'25px' , marginRight: '10px'}}></i>Відсутність шкідливих звичок</dd>
-                    <dd><i className="bi bi-check" style={{color: 'lime', fontSize:'25px' , marginRight: '10px'}}></i>Стресостійкість </dd>
-                    <dd><i className="bi bi-check" style={{color: 'lime', fontSize:'25px' , marginRight: '10px'}}></i>Комунікативність та охайний зовнішній вигляд</dd>
-                    <dd><i className="bi bi-check" style={{color: 'lime', fontSize:'25px' , marginRight: '10px'}}></i>Вміння та бажання працювати в колективі</dd>
+                    <dd><i className="bi bi-check"
+                           style={{color: 'lime', fontSize: '25px', marginRight: '10px'}}></i> {t('drivers_phone')}</dd>
+                    <dd><i className="bi bi-check"
+                           style={{color: 'lime', fontSize: '25px', marginRight: '10px'}}></i> {t('drivers_experience')}
+                    </dd>
+                    <dd><i className="bi bi-check"
+                           style={{color: 'lime', fontSize: '25px', marginRight: '10px'}}></i> {t('drivers_city')} </dd>
+                    <dd><i className="bi bi-check"
+                           style={{color: 'lime', fontSize: '25px', marginRight: '10px'}}></i> {t('drivers_expmobile')}
+                    </dd>
+                    <dd><i className="bi bi-check"
+                           style={{color: 'lime', fontSize: '25px', marginRight: '10px'}}></i> {t('drivers_badhabits')}
+                    </dd>
+                    <dd><i className="bi bi-check"
+                           style={{color: 'lime', fontSize: '25px', marginRight: '10px'}}></i> {t('drivers_stressres')}
+                    </dd>
+                    <dd><i className="bi bi-check" style={{
+                        color: 'lime',
+                        fontSize: '25px',
+                        marginRight: '10px'
+                    }}></i> {t('drivers_communicability')} </dd>
+                    <dd><i className="bi bi-check"
+                           style={{color: 'lime', fontSize: '25px', marginRight: '10px'}}></i> {t('drivers_collective')}
+                    </dd>
                 </div>
                 <div className={classes.imgGoogle}>
-                    <p className='pt-4'>Додаток для водіїв:</p>
+                    <p className='pt-4'>{t('drivers_mobilefordrivers')}</p>
                     <a href='https://play.google.com/store/apps/details?id=ua.com.mobilauto.driver'>
                         <img
                             src={google}
@@ -69,9 +80,9 @@ const Drivers = () => {
                     </a>
                 </div>
                 <div className='mt-4'>
-                    <p>Якщо Вас влаштовують умови роботи та Ви відповідаєте вимогам до водія заповніть будь-ласка форму та очікуйте на відповідь.</p>
+                    <p>{t('drivers_ifagree')}</p>
                     <Nav.Link href='/feedback'>
-                        <Button className='fs-3 p-3 mt-3'>Заповнити форму</Button>
+                        <Button className='fs-3 p-3 mt-3'>{t('drivers_form')}</Button>
                     </Nav.Link>
                 </div>
             </div>

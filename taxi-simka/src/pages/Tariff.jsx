@@ -32,9 +32,9 @@ const Tariff = () => {
                             <div className="col-md-3 col-6 mb-3 my-md-4 my-2">
                                 <span className={classes.numbers}>{car.minVar} </span>
                                 <div>
-                                    <span className={classes.desc}>мінімальна
+                                    <span className={classes.desc}>{t('tariff_min')}
                                     <br/></span>
-                                    <span className={classes.desc}>вартість, грн
+                                    <span className={classes.desc}>{t('tariff_var')}
                                     <br/></span>
                                 </div>
                             </div>
@@ -42,9 +42,9 @@ const Tariff = () => {
                             <div className="col-md-3 col-6 mb-3 my-md-4 my-2">
                                 <span className={classes.numbers}>{car.minVid}</span>
                                 <div>
-                                    <span className={classes.desc}>відстань
+                                    <span className={classes.desc}>{t('tariff_vid')}
                                     <br/></span>
-                                    <span className={classes.desc}>до, км
+                                    <span className={classes.desc}>{t('tariff_vid2')}
                                     <br/></span>
                                 </div>
                             </div>
@@ -52,9 +52,9 @@ const Tariff = () => {
                             <div className="col-md-3 col-6 mb-3 my-md-4">
                                 <span className={classes.numbers}>{car.varPoMist} </span>
                                 <div>
-                                    <span className={classes.desc}>вартість за км
+                                    <span className={classes.desc}>{t('tariff_varkm')}
                                     <br/></span>
-                                    <span className={classes.desc}>по місту, грн
+                                    <span className={classes.desc}>{t('tariff_pomist')}
                                     <br/></span>
                                 </div>
                             </div>
@@ -62,9 +62,9 @@ const Tariff = () => {
                             <div className="col-md-3 col-6 mb-3 my-md-4">
                                 <span className={classes.numbers}>{car.varZaMist} </span>
                                 <div>
-                                    <span className={classes.desc}>вартість за км
+                                    <span className={classes.desc}>{t('tariff_varkm')}
                                     <br/></span>
-                                    <span className={classes.desc}>за містом, грн
+                                    <span className={classes.desc}>{t('tariff_zamist')}
                                     <br/></span>
                                 </div>
                             </div>
@@ -74,7 +74,7 @@ const Tariff = () => {
                                 <div>
                                     <span className={classes.desc}>{car.forDelivery}
                                         <br/></span>
-                                    <span className={classes.desc}>очікування, хв
+                                    <span className={classes.desc}>{t('tariff_wait')}
                                     <br/></span>
                                 </div>
                             </div>
@@ -82,9 +82,9 @@ const Tariff = () => {
                             <div className="col-md-3 col-6 mb-3">
                                 <span className={classes.numbers}>{car.varSt}</span>
                                 <div>
-                                    <span className={classes.desc}>вартість
+                                    <span className={classes.desc}>{t('tariff_varsolo')}
                                     <br/></span>
-                                    <span className={classes.desc}>простою, грн/хв
+                                    <span className={classes.desc}>{t('tariff_prostoy')}
                                     <br/></span>
                                 </div>
                             </div>
@@ -92,9 +92,9 @@ const Tariff = () => {
                             <div className="col-md-3 col-6 mb-5">
                                 <span className={classes.numbers}>3 </span>
                                 <div>
-                                    <span className={classes.desc}>Подача авто
+                                    <span className={classes.desc}>{t('tariff_podacha')}
                                     <br/></span>
-                                    <span className={classes.desc}>за місто, грн/км
+                                    <span className={classes.desc}>{t('tariff_zamistslash')}
                                     <br/></span>
                                 </div>
                             </div>

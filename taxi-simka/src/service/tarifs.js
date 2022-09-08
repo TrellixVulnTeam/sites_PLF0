@@ -7,8 +7,6 @@ import techCar from '../img/class_tech.png'
 import i18n from "../i18n";
 
 
-
-
 export const standart = {
     img: standartCar,
     name: 'Стандарт',
@@ -18,24 +16,24 @@ export const standart = {
     varZaMist: 19,
     freeWait: 5,
     varSt: 2,
-    forDelivery: 'безкоштовне',
-    desc1: 'вартість до тарифу',
-    desc2: 'за проїзд з твариною, грн',
+    forDelivery: i18n.t('tar_js_price'),
+    desc1: i18n.t('tar_js_desc1_var'),
+    desc2: i18n.t('tar_js_desc2_animal'),
     value1: '20'
 }
 
 export const universal = {
     img: universalCar,
-    name: 'Універсал',
+    name: i18n.t('tariff_universal'),
     minVar: 60,
     minVid: 2,
     varPoMist: 20,
     varZaMist: 20,
     freeWait: 5,
     varSt: 2,
-    forDelivery: 'безкоштовне',
-    desc1: 'вартість до тарифу',
-    desc2: 'за проїзд з твариною, грн',
+    forDelivery: i18n.t('tar_js_price'),
+    desc1: i18n.t('tar_js_desc1_var'),
+    desc2: i18n.t('tar_js_desc2_animal'),
     value1: '20'
 }
 
@@ -48,10 +46,10 @@ export const driver = {
     varZaMist: 50,
     freeWait: 5,
     varSt: 4,
-    forDelivery: 'безкоштовне',
-    desc: '(Послуга діє виключно за попередньою домовленістю з водієм)',
-    desc1: 'вартість до тарифу',
-    desc2: 'за проїзд з твариною, грн',
+    forDelivery: i18n.t('tar_js_price'),
+    desc: i18n.t('tar_js_desc_posluga'),
+    desc1: i18n.t('tar_js_desc1_var'),
+    desc2: i18n.t('tar_js_desc2_animal'),
     value1: '20'
 }
 
@@ -64,40 +62,40 @@ export const delivery = {
     varZaMist: 19,
     freeWait: 20,
     varSt: 3,
-    forDelivery: 'загальне',
-    desc: '(Послуга діє виключно за попередньою домовленістю з водієм)',
-    desc1: 'вартість до тарифу',
-    desc2: 'за проїзд з твариною, грн',
+    forDelivery: i18n.t('tar_js_forDelivery_zag'),
+    desc: i18n.t('tar_js_desc_posluga'),
+    desc1: i18n.t('tar_js_desc1_var'),
+    desc2: i18n.t('tar_js_desc2_animal'),
     value1: '20'
 }
 
 export const miniven = {
     img: minivanCar,
-    name: 'Мінівен',
+    name: i18n.t('tariff_miniven'),
     minVar: 75,
     minVid: 2,
     varPoMist: 27,
     varZaMist: 30,
     freeWait: 3,
     varSt: 3,
-    forDelivery: 'безкоштовне',
-    desc1: 'вартість до тарифу',
-    desc2: 'за проїзд з твариною, грн',
+    forDelivery: i18n.t('tar_js_price'),
+    desc1: i18n.t('tar_js_desc1_var'),
+    desc2: i18n.t('tar_js_desc2_animal'),
     value1: '20'
 }
 
 export const tech = {
     img: techCar,
-    name: 'Техпідтримка',
+    name: i18n.t('tariff_tech'),
     minVar: 120,
     minVid: 2,
     varPoMist: 30,
     varZaMist: 40,
     freeWait: 5,
     varSt: 3,
-    forDelivery: 'безкоштовне',
-    desc: '(«Прикурити», відтягти, надати іншу технічну допомогу)',
-    desc1: 'за використання',
-    desc2: 'власного інструменту',
+    forDelivery: i18n.t('tar_js_price'),
+    desc: i18n.t('tar_js_desc_tech'),
+    desc1: i18n.t('tar_js_desc1_use'),
+    desc2: i18n.t('tar_js_desc2_instrument'),
     value1: ' ---'
 }

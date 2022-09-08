@@ -1,3 +1,6 @@
+import i18n from "i18next";
+
+
 export let last = []
 
 export function upload(selector, options = {}) {
@@ -6,10 +9,8 @@ export function upload(selector, options = {}) {
     const input = document.querySelector(selector)
     const preview = document.createElement('div')
 
-    preview.classList.add('Feedback_preview__Nf3jY')
-
     const open = document.createElement('Button')
-    open.textContent = 'Обрати фото'
+    open.textContent = i18n.t('upload_js_choise')
 
     if (options.multi) {
         input.setAttribute('multiple', true)

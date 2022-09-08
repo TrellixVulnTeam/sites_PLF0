@@ -7,6 +7,8 @@ import {delivery, driver, standart, universal} from "../service/tarifs";
 import {Button} from "react-bootstrap";
 import InputMask from 'react-input-mask'
 import {upload, last} from "../service/upload.js";
+import {useTranslation} from "react-i18next";
+import i18n from "i18next";
 
 const SERVICE_ID = "taxi-simka";
 const TEMPLATE_ID = "template_a0wm0pl";
@@ -17,6 +19,8 @@ setTimeout(()=>upload('#file', {
 }), 1000)
 
 const Feedback = () => {
+
+        const {t} = useTranslation()
 
         const [arrForSend, setArrForSend] = useState(last)
         const [currentCar, setCurrentCar] = useState('');
@@ -42,16 +46,16 @@ const Feedback = () => {
             "#8000FF"
         ];
         const colorsName = [
-            "Чорний",
-            "Білий",
-            "Сірий",
-            "Червоний",
-            "Жовтий",
-            "Оранжевий",
-            "Зелений",
-            "Синій",
-            "Голубий",
-            "Фіолетовий"
+            i18n.t('feedback_black'),
+            i18n.t('feedback_white'),
+            i18n.t('feedback_gray'),
+            i18n.t('feedback_red'),
+            i18n.t('feedback_yellow'),
+            i18n.t('feedback_orange'),
+            i18n.t('feedback_green'),
+            i18n.t('feedback_blue'),
+            i18n.t('feedback_sky_blue'),
+            i18n.t('feedback_purple')
         ];
         const [current, setCurrent] = useState('');
         const [hidden, setHidden] = useState(true)
@@ -109,7 +113,7 @@ const Feedback = () => {
                          if (files.length - i === 1) {
                              Swal.fire({
                                  icon: 'success',
-                                 title: 'Всі файли прикріленно!'
+                                 title: i18n.t('feedback_success')
                              })
                              setUrlOnFolder(a);
                              setLoading(false)
@@ -126,7 +130,7 @@ const Feedback = () => {
                 .then((result) => {
                     Swal.fire({
                         icon: 'success',
-                        title: 'Повідомлення доставленно'
+                        title: i18n.t('feedback_success_mail')
                     })
                 }, (error) => {
                     console.log(error.text);
@@ -146,10 +150,9 @@ const Feedback = () => {
                     <div className="py-5">
                         <div className={classes.App}>
                             <form onSubmit={handleOnSubmit} className={classes.myForm}>
-                                <h1 className='text-center' style={{color: '#d0d0d9', marginBottom: '64px'}}>Заява на
-                                    вакансію водія</h1>
+                                <h1 className='text-center' style={{color: '#d0d0d9', marginBottom: '64px'}}> {t('feedback_statement')}</h1>
                                 <p className={classes.formGroup}>
-                                    <label>Прізвище: <span style={{color: "#ff0101"}}>*</span></label>
+                                    <label>{t('feedback_surname')}  <span style={{color: "#ff0101"}}>*</span></label>
                                     <input type="text"
                                            name='user_surname'
                                         // placeholder="Прізвище"
@@ -159,26 +162,26 @@ const Feedback = () => {
                                 </p>
 
                                 <p className={classes.formGroup}>
-                                    <label>Ім'я: <span style={{color: "#da1e1e"}}>*</span></label>
+                                    <label>{t('feedback_name')}  <span style={{color: "#da1e1e"}}>*</span></label>
                                     <input type="text"
                                         //placeholder="Ім'я"
                                            name='user_name' required/>
                                 </p>
 
                                 <p className={classes.formGroup}>
-                                    <label>По-батькові: <span style={{color: "#da1e1e"}}>*</span></label>
+                                    <label>{t('feedback_patronymic')}  <span style={{color: "#da1e1e"}}>*</span></label>
                                     <input type="text"
                                         //placeholder="По-батькові"
                                            name='user_patronymic' required/>
                                 </p>
 
                                 <p className={classes.formGroup}>
-                                    <label>Дата народження: <span style={{color: "#da1e1e"}}>*</span></label>
+                                    <label>{t('feedback_dateofbirth')}  <span style={{color: "#da1e1e"}}>*</span></label>
                                     <input type="date" name='user_date' required/>
                                 </p>
 
                                 <p className={classes.formGroup}>
-                                    <label>Тел. Основний (з вайбер): <span style={{color: "#da1e1e"}}>*</span></label>
+                                    <label>{t('feedback_tel1')}  <span style={{color: "#da1e1e"}}>*</span></label>
                                     <InputMask type="tel"
                                                id='phone'
                                         // placeholder="Основний телефон"
@@ -188,7 +191,7 @@ const Feedback = () => {
                                 </p>
 
                                 <p className={classes.formGroup}>
-                                    <label>Тел. Резервний: </label>
+                                    <label>{t('feedback_tel2')}  </label>
                                     <InputMask type="tel"
                                                id='phone'
                                         // placeholder="Резервний телефон"
@@ -199,21 +202,21 @@ const Feedback = () => {
 
 
                                 <p className={classes.formGroup}>
-                                    <label>Марка/Модель авто: <span style={{color: "#da1e1e"}}>*</span></label>
+                                    <label>{t('feedback_model')}  <span style={{color: "#da1e1e"}}>*</span></label>
                                     <input type="text"
                                         //placeholder="Марка/Модель авто"
                                            name='user_autoModel' required/>
                                 </p>
 
                                 <p className={classes.formGroup}>
-                                    <label>Державний номер: <span style={{color: "#da1e1e"}}>*</span></label>
+                                    <label>{t('feedback_number')}  <span style={{color: "#da1e1e"}}>*</span></label>
                                     <input type="text"
                                         //placeholder="Державний номер"
                                            name='user_numberAuto' required/>
                                 </p>
 
                                 <p className={classes.formGroup}>
-                                    <label style={{top: '-30px'}}>Рік випуску: <span
+                                    <label style={{top: '-30px'}}>{t('feedback_release')}  <span
                                         style={{color: "#da1e1e"}}>*</span></label>
                                     <select className="form-select" name='user_dateAuto'
                                             aria-label="Оберіть рік випуску"
@@ -240,7 +243,7 @@ const Feedback = () => {
                                 </p>
 
                                 <div className={classes.formGroup}>
-                                    <label style={{top: '-30px'}}>Колір: <span style={{color: "#da1e1e"}}>*</span></label>
+                                    <label style={{top: '-30px'}}>{t('feedback_color')}  <span style={{color: "#da1e1e"}}>*</span></label>
                                     <select className="form-select" name='user_colorAuto'
                                             id='test1'
                                             aria-label="Оберіть рік випуску"
@@ -251,7 +254,7 @@ const Feedback = () => {
                                                 defaultValue>{
                                             current !== ''
                                                 ? colorsName[current]
-                                                : 'Оберіть ваш колір:'}
+                                                : i18n.t('feeback_chooseColor')}
                                         </option>
                                     </select>
                                     {!hidden
@@ -273,7 +276,7 @@ const Feedback = () => {
                                 </div>
 
                                 <div className={classes.formGroup}>
-                                    <label>Тип авто: <span style={{color: "#da1e1e"}}>*</span></label>
+                                    <label>{t('feedback_typeauto')} <span style={{color: "#da1e1e"}}>*</span></label>
                                     <div className={classes.buttons}>
                                         <div className="row">
                                             <div className="col-md-3 col-12 px-1">
@@ -304,7 +307,7 @@ const Feedback = () => {
                                                         width="62"
                                                         height="62"
                                                         alt="Car Універсал"/>
-                                                    <span>Універсал</span></Button>
+                                                    <span>{t('tariff_universal')}</span></Button>
                                             </div>
                                             <div className="col-md-3 col-12 px-1">
                                                 <Button
@@ -319,7 +322,7 @@ const Feedback = () => {
                                                         width="62"
                                                         height="62"
                                                         alt="Car Мінівен"/>
-                                                    <span>Мінівен</span>
+                                                    <span>{t('tariff_miniven')}</span>
                                                 </Button>
                                             </div>
                                             <div className="col-md-3 col-12 px-1">
@@ -335,7 +338,7 @@ const Feedback = () => {
                                                         width="62"
                                                         height="62"
                                                         alt="Car мікроавтобус"/>
-                                                    <span>Мікроавтобус</span>
+                                                    <span>{t('tariff_microbus')}</span>
                                                 </Button>
                                             </div>
                                         </div>
@@ -351,14 +354,14 @@ const Feedback = () => {
 
                                 {screenW >= 768
                                     ? <p className={classes.formGroup}>
-                                        <label>Кількість місць: <span style={{color: "#da1e1e"}}>*</span></label>
+                                        <label>{t('feedback_countsited')}<span style={{color: "#da1e1e"}}>*</span></label>
                                         <input type="number"
                                             //placeholder="Кількість місць"
                                                name='user_countSited'
                                                min='1' max='40' required/>
                                     </p>
                                     : <p className={classes.formGroup}>
-                                        <label style={{top: '-30px'}}>Кількість місць: <span
+                                        <label style={{top: '-30px'}}>{t('feedback_countsited')} <span
                                             style={{color: "#da1e1e"}}>*</span></label>
                                         <select className="form-select" name='user_countSited'
                                                 aria-label="Оберіть кількість місць"
@@ -378,16 +381,15 @@ const Feedback = () => {
                                 }
 
                                 <div className={classes.formGroup}>
-                                    <label className='position-static'>Фото авто та документів: <span
+                                    <label className='position-static'>{t('feedback_photo')} <span
                                         style={{color: "#da1e1e"}}>*</span>
                                         <br/>
-                                        (авто: перед-зад, ліва-права сторони, салон - спереду та ззаду, паспорт 1,2
-                                        стор. та
-                                        прописка, водійське посвідчення – дві сторони, техпаспорт – дві сторони)
+                                        {t('feedback_photo_desc')}
                                     </label><br/>
                                     <br/>
 
-
+                                    {/*ПОСЛЕ ЗАГРУЗКИ СТРАНИЦЫ СОЗДАЕТСЯ КНОПКА ДЛЯ ДОБАВЛЕНИЯ ФАЙЛОВ, ПОСЛЕ ИНПУТА,
+                                    КОТОРЫЙ НИЖЕ, ПОЭТОМУ У НЕГО display: none*/}
                                     <input type="file"
                                            id="file"
                                            style={{display: 'none'}}
@@ -400,7 +402,7 @@ const Feedback = () => {
                                         onClick={(e) => {
                                         guardarArchivo(e);
                                         replaceSur(e); console.log(arrForSend)}
-                                    } style={{width: '138px'}}>Прикріпити</button>
+                                    } style={{width: '138px', marginTop: '10px'}}>{t('feedback_attach')}</button>
 
                                     {/*<input type="file"*/}
                                     {/*       multiple*/}
@@ -424,8 +426,8 @@ const Feedback = () => {
                                 </div>
 
                                 <p className={classes.formGroup}>
-                                    <label>Про себе: <span style={{color: "#da1e1e"}}>*</span></label><br/>
-                                    Досвід роботи (де, коли, тривалість), знання міста, «чому саме я?» та ін. <br/>
+                                    <label>{t('feedback_aboutme')} <span style={{color: "#da1e1e"}}>*</span></label><br/>
+                                    {t('feedback_aboutme_desc')} <br/>
                                     <textarea
                                         //placeholder="Про себе"
                                         className='mt-2'
@@ -433,11 +435,9 @@ const Feedback = () => {
                                 </p>
 
 
-                                <Button type='submit' disabled={!surnameInput}>Відправити</Button>
-                                <h6 style={{color: '#21252a', fontWeight: 'bold', margin: '16px 0px'}}>( * поля обов’язкові
-                                    для заповнення )</h6>
-                                <h4 className='text-center pt-5' style={{color: '#0d6cfb'}}>За додатковою інформацією
-                                    звертатися за номером <a
+                                <Button type='submit' disabled={!surnameInput}>{t('feedback_send')}</Button>
+                                <h6 style={{color: '#21252a', fontWeight: 'bold', margin: '16px 0px'}}>{t('feedback_requirement')}</h6>
+                                <h4 className='text-center pt-5' style={{color: '#0d6cfb'}}>{t('feedback_additional')}<a
                                         href='tel: +380637208050' style={{color: '#0d6cfb'}}>+380637208050</a></h4>
 
 
