@@ -6,7 +6,7 @@
     background-repeat: no-repeat;
     background-size: 0 2px;
     transition: background-size .3s;
-    padding: 20px !important;
+    padding: 15px !important;
 }
 
 
@@ -38,3 +38,15 @@
     border: none;
     margin: 0 20px;
 }
+
+.selectCity option {
+    /*background-color: black;*/
+    color: black;
+}
+
+.todoListMain {
+    width: 100px;
+    height: 100px;
+    background-color: black!important;
+}
+

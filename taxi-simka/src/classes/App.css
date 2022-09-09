@@ -16,3 +16,40 @@ html {
     src: local('LetterGothic-Regular'), url('https://nomail.com.ua/files/woff/2c2fe6626939a3afdb4922cff0c5c8f7.woff') format('woff');
 }
 
+
+.langselect__control--is-focused, .myselect__control--is-focused{
+    box-shadow: none!important;
+}
+
+.langselect__indicator-separator, .myselect__indicator-separator {
+    display: none;
+}
+
+.langselect__single-value, .myselect__single-value {
+    color: white!important;
+}
+
+.myselect__control {
+    margin: 15px 10px!important;
+    font-size: 20px;
+    background-color: inherit!important;
+    border: none!important;
+    cursor: pointer;
+}
+
+.langselect__menu, .myselect__menu {
+    background-color: #b2a9a9!important;
+    color: #2c2a2a!important;
+}
+
+.langselect__control {
+    background-color: #565252 !important;
+}
+
+.langselect__placeholder {
+    color: white!important;
+}
+
+.myselect__indicator {
+    color: white!important;
+}

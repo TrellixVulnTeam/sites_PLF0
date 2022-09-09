@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import emailjs from "emailjs-com";
 import classes from '../classes/Feedback.module.css'
 import '../classes/Feedback.module.css'
-import {delivery, driver, standart, universal} from "../service/tarifs";
+import {delivery, driver, standart, universal} from "../service/tarifs_Vasil";
 import {Button} from "react-bootstrap";
 import InputMask from 'react-input-mask'
 import {upload, last} from "../service/upload.js";

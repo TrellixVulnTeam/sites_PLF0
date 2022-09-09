@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import classes from '../classes/Tariff.module.css'
-import {standart, universal, driver, delivery, miniven, tech} from "../service/tarifs";
+import {standart, universal, driver, delivery, miniven, tech} from "../service/tarifs_Vasil";
+import {standartO, universalO, driverO, deliveryO, minivenO, techO} from "../service/tarifs_Obuh";
 import {useTranslation} from "react-i18next";
 
 
 const Tariff = () => {
-    let [car, setCar] = useState(standart)
+    const city = localStorage.getItem('city')
+    let [car, setCar] = useState(city === "\"vasil\"" ? standart : standartO)
     const {t} = useTranslation()
 
     return (
@@ -115,22 +117,22 @@ const Tariff = () => {
                     <div className={classes.buttons}>
                         <div className="row">
                             <div className="col-md-4 col-6">
-                                <button onClick={() => setCar(car = standart)}>Стандарт</button>
+                                <button onClick={() => setCar(city==="\"vasil\"" ?  standart :  standartO)}>Стандарт</button>
                             </div>
                             <div className="col-md-4 col-6">
-                                <button onClick={() => setCar(car = universal)}>{t('tariff_universal')}</button>
+                                <button onClick={() => setCar(city==="\"vasil\"" ?  universal :  universalO)}>{t('tariff_universal')}</button>
                             </div>
                             <div className="col-md-4 col-6">
-                                <button onClick={() => setCar(car = miniven)}>{t('tariff_miniven')}</button>
+                                <button onClick={() => setCar(city==="\"vasil\"" ?  miniven :  minivenO)}>{t('tariff_miniven')}</button>
                             </div>
                             <div className="col-md-4 col-6">
-                                <button onClick={() => setCar(car = driver)}>Драйвер</button>
+                                <button onClick={() => setCar(city==="\"vasil\"" ?  driver :  driverO)}>Драйвер</button>
                             </div>
                             <div className="col-md-4 col-6">
-                                <button onClick={() => setCar(car = delivery)}>Доставка</button>
+                                <button onClick={() => setCar(city==="\"vasil\"" ?  delivery :  deliveryO)}>Доставка</button>
                             </div>
                             <div className="col-md-4 col-6">
-                                <button onClick={() => setCar(car = tech)}>{t('tariff_tech')}</button>
+                                <button onClick={() => setCar(city==="\"vasil\"" ? car = tech : car = techO)}>{t('tariff_tech')}</button>
                             </div>
                         </div>
                     </div>

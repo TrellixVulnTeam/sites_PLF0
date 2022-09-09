@@ -202,26 +202,23 @@ body {
         padding: 10px;
     }
 
-    .imgGoogle {
-        top: 53%;
-        padding: 20px;
-    }
+
 
     .bgText {
         font-size: 2rem;
     }
 }
 
-@media screen and (min-width: 250px) and (max-height: 430px){
+@media screen and (min-width: 256px) and (max-height: 530px){
     .bgText {
         display: none;
     }
 
     .imgGoogle {
         padding: 10px;
-        left: 20%;
+        left: 10%;
         top: 5%;
-        width: 60%;
+        width: 80%;
         border-radius: 15px 15px 10px 9px;
 
     }
@@ -247,7 +244,7 @@ body {
     }
 }
 
-@media screen and (min-width: 150px)  and (max-width: 257px) {
+@media screen and (min-width: 150px)  and (max-width: 272px) {
     .bgText {
         display: none;
     }
@@ -262,9 +259,9 @@ body {
     .contacts {
         padding: 0 5px 0 0;
         font-size: 20px;
-        width: 90%;
+        width: 90%!important;
         top: 15%;
-        left: 5%;
+        left: 5%!important;
     }
 }
 @media screen and (max-width: 700px) and (max-height: 430px){
@@ -272,11 +269,10 @@ body {
 
     .imgGoogle {
         padding: 10px;
-        left: 15%;
+        left: 20%;
         top: 5%;
-        width: 70%;
+        width: 60%;
         border-radius: 15px 15px 10px 9px;
-
     }
 
     .imgGoogle p {
@@ -286,7 +282,9 @@ body {
     .contacts {
         padding:0 5px 0 0 ;
         font-size: 1.2rem;
-        top: 37%
+        top: 37%;
+        left: 10%;
+        width: 80%;
     }
 
     .contacts p {
@@ -297,19 +295,8 @@ body {
     }
 }
 
-@media screen and (min-width: 600px) and (max-height: 364px) {
-    .bgImage {
-        height: 150vh;
-    }
-}
 
-@media screen and (max-height: 653px) and (max-width: 522px){
-   .bgImage {
-        height: 120vh;
-   }
-}
-
-@media screen and (max-height: 545px){
+@media screen and (max-height: 700px){
     .bgImage {
         height: 130vh;
     }
@@ -330,15 +317,25 @@ body {
 /*}*/
 
 @media screen and (max-width: 265px) and (max-height: 340px){
-    .imgGoogle{
-        display: none;
-    }
-
     .contacts{
         top: 10%;
     }
 
     .buttonsToRedirect {
         top: 60%
+    }
+}
+
+@media screen and (max-height: 360px){
+    .buttonsToRedirect {
+        display: none;
+    }
+
+    .contacts {
+        top: 55%;
+    }
+
+    .imgGoogle{
+        top: 10%;
     }
 }
