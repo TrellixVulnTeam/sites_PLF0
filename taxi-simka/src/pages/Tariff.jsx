@@ -10,6 +10,10 @@ const Tariff = () => {
     let [car, setCar] = useState(city === "\"vasil\"" ? standart : standartO)
     const {t} = useTranslation()
 
+     function changeCar(carClass, carClassO) {
+         setCar(city==="\"vasil\"" ?  carClass :  carClassO)
+     }
+
     return (
         <div className={classes.bodyBg}>
             <div className="container border-dark">
@@ -117,22 +121,22 @@ const Tariff = () => {
                     <div className={classes.buttons}>
                         <div className="row">
                             <div className="col-md-4 col-6">
-                                <button onClick={() => setCar(city==="\"vasil\"" ?  standart :  standartO)}>Стандарт</button>
+                                <button onClick={() => changeCar(standart, standartO)}>Стандарт</button>
                             </div>
                             <div className="col-md-4 col-6">
-                                <button onClick={() => setCar(city==="\"vasil\"" ?  universal :  universalO)}>{t('tariff_universal')}</button>
+                                <button onClick={() => changeCar(universal, universalO)}>{t('tariff_universal')}</button>
                             </div>
                             <div className="col-md-4 col-6">
-                                <button onClick={() => setCar(city==="\"vasil\"" ?  miniven :  minivenO)}>{t('tariff_miniven')}</button>
+                                <button onClick={() => changeCar(miniven, minivenO)}>{t('tariff_miniven')}</button>
                             </div>
                             <div className="col-md-4 col-6">
-                                <button onClick={() => setCar(city==="\"vasil\"" ?  driver :  driverO)}>Драйвер</button>
+                                <button onClick={() => changeCar(driver, driverO)}>Драйвер</button>
                             </div>
                             <div className="col-md-4 col-6">
-                                <button onClick={() => setCar(city==="\"vasil\"" ?  delivery :  deliveryO)}>Доставка</button>
+                                <button onClick={() => changeCar(delivery, deliveryO)}>Доставка</button>
                             </div>
                             <div className="col-md-4 col-6">
-                                <button onClick={() => setCar(city==="\"vasil\"" ? car = tech : car = techO)}>{t('tariff_tech')}</button>
+                                <button onClick={() => changeCar(tech, techO)}>{t('tariff_tech')}</button>
                             </div>
                         </div>
                     </div>

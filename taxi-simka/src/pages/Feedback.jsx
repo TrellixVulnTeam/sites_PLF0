@@ -13,7 +13,7 @@ import i18n from "i18next";
 const SERVICE_ID = "taxi-simka";
 const TEMPLATE_ID = "template_a0wm0pl";
 const USER_ID = "iNXJWN7ii38WJWgYa";
-setTimeout(()=>upload('#file', {
+setTimeout(() => upload('#file', {
     multi: true,
     accept: ['.png', '.jpg', '.jpeg', '.gif']
 }), 1000)
@@ -26,10 +26,12 @@ const Feedback = () => {
         const [currentCar, setCurrentCar] = useState('');
         const [surnameInput, setSurnameInput] = useState('');
         const [urlOnFolder, setUrlOnFolder] = useState('');
+        const [isDisableButton, setIsDisableButton] = useState(true)
         const [appState, changeAppState] = useState({
             activeObject: null,
             objects: [{id: 1}, {id: 2}, {id: 3}, {id: 4}]
         });
+
 
         const [loading, setLoading] = useState(false)
         const screenW = window.screen.width;
@@ -105,20 +107,20 @@ const Feedback = () => {
                         fname: "uploadFilesToGoogleDrive"
                     }; //preapre info to send to API
                     fetch('https://script.google.com/macros/s/AKfycbyv93E5DtAWx0icgEwUeKFvK2WuyyTZQRzUcjTw2eZkFddXBC3RCHFPAGn5DjXvn8-fiQ/exec',
-                         {
-                             method: "POST",
-                             body: JSON.stringify(dataSend)
-                         }) //send to Api
-                         .then(res => res.json()).then((a) => {
-                         if (files.length - i === 1) {
-                             Swal.fire({
-                                 icon: 'success',
-                                 title: i18n.t('feedback_success')
-                             })
-                             setUrlOnFolder(a);
-                             setLoading(false)
-                         }
-                     }).catch(e => console.log(e))
+                        {
+                            method: "POST",
+                            body: JSON.stringify(dataSend)
+                        }) //send to Api
+                        .then(res => res.json()).then((a) => {
+                        if (files.length - i === 1) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: i18n.t('feedback_success')
+                            })
+                            setUrlOnFolder(a);
+                            setLoading(false)
+                        }
+                    }).catch(e => console.log(e))
                 }
             }
         }
@@ -150,9 +152,10 @@ const Feedback = () => {
                     <div className="py-5">
                         <div className={classes.App}>
                             <form onSubmit={handleOnSubmit} className={classes.myForm}>
-                                <h1 className='text-center' style={{color: '#d0d0d9', marginBottom: '64px'}}> {t('feedback_statement')}</h1>
+                                <h1 className='text-center'
+                                    style={{color: '#d0d0d9', marginBottom: '64px'}}> {t('feedback_statement')}</h1>
                                 <p className={classes.formGroup}>
-                                    <label>{t('feedback_surname')}  <span style={{color: "#ff0101"}}>*</span></label>
+                                    <label>{t('feedback_surname')} <span style={{color: "#ff0101"}}>*</span></label>
                                     <input type="text"
                                            name='user_surname'
                                         // placeholder="Прізвище"
@@ -162,26 +165,26 @@ const Feedback = () => {
                                 </p>
 
                                 <p className={classes.formGroup}>
-                                    <label>{t('feedback_name')}  <span style={{color: "#da1e1e"}}>*</span></label>
+                                    <label>{t('feedback_name')} <span style={{color: "#da1e1e"}}>*</span></label>
                                     <input type="text"
                                         //placeholder="Ім'я"
                                            name='user_name' required/>
                                 </p>
 
                                 <p className={classes.formGroup}>
-                                    <label>{t('feedback_patronymic')}  <span style={{color: "#da1e1e"}}>*</span></label>
+                                    <label>{t('feedback_patronymic')} <span style={{color: "#da1e1e"}}>*</span></label>
                                     <input type="text"
                                         //placeholder="По-батькові"
                                            name='user_patronymic' required/>
                                 </p>
 
                                 <p className={classes.formGroup}>
-                                    <label>{t('feedback_dateofbirth')}  <span style={{color: "#da1e1e"}}>*</span></label>
+                                    <label>{t('feedback_dateofbirth')} <span style={{color: "#da1e1e"}}>*</span></label>
                                     <input type="date" name='user_date' required/>
                                 </p>
 
                                 <p className={classes.formGroup}>
-                                    <label>{t('feedback_tel1')}  <span style={{color: "#da1e1e"}}>*</span></label>
+                                    <label>{t('feedback_tel1')} <span style={{color: "#da1e1e"}}>*</span></label>
                                     <InputMask type="tel"
                                                id='phone'
                                         // placeholder="Основний телефон"
@@ -202,21 +205,21 @@ const Feedback = () => {
 
 
                                 <p className={classes.formGroup}>
-                                    <label>{t('feedback_model')}  <span style={{color: "#da1e1e"}}>*</span></label>
+                                    <label>{t('feedback_model')} <span style={{color: "#da1e1e"}}>*</span></label>
                                     <input type="text"
                                         //placeholder="Марка/Модель авто"
                                            name='user_autoModel' required/>
                                 </p>
 
                                 <p className={classes.formGroup}>
-                                    <label>{t('feedback_number')}  <span style={{color: "#da1e1e"}}>*</span></label>
+                                    <label>{t('feedback_number')} <span style={{color: "#da1e1e"}}>*</span></label>
                                     <input type="text"
                                         //placeholder="Державний номер"
                                            name='user_numberAuto' required/>
                                 </p>
 
                                 <p className={classes.formGroup}>
-                                    <label style={{top: '-30px'}}>{t('feedback_release')}  <span
+                                    <label style={{top: '-30px'}}>{t('feedback_release')} <span
                                         style={{color: "#da1e1e"}}>*</span></label>
                                     <select className="form-select" name='user_dateAuto'
                                             aria-label="Оберіть рік випуску"
@@ -243,7 +246,8 @@ const Feedback = () => {
                                 </p>
 
                                 <div className={classes.formGroup}>
-                                    <label style={{top: '-30px'}}>{t('feedback_color')}  <span style={{color: "#da1e1e"}}>*</span></label>
+                                    <label style={{top: '-30px'}}>{t('feedback_color')} <span
+                                        style={{color: "#da1e1e"}}>*</span></label>
                                     <select className="form-select" name='user_colorAuto'
                                             id='test1'
                                             aria-label="Оберіть рік випуску"
@@ -394,25 +398,22 @@ const Feedback = () => {
                                            id="file"
                                            style={{display: 'none'}}
                                            capture="user"
-                                           onChange={()=>{setArrForSend(last); console.log(arrForSend)}}
+                                           onChange={() => {
+                                               setArrForSend(last);
+                                               setIsDisableButton(false);
+                                               console.log(arrForSend)
+                                           }}
                                     />
 
                                     <button
-                                        disabled={arrForSend.length === 0}
+                                        disabled={isDisableButton === true}
+                                        type='button'
                                         onClick={(e) => {
-                                        guardarArchivo(e);
-                                        replaceSur(e); console.log(arrForSend)}
-                                    } style={{width: '138px', marginTop: '10px'}}>{t('feedback_attach')}</button>
-
-                                    {/*<input type="file"*/}
-                                    {/*       multiple*/}
-                                    {/*       accept="image"*/}
-                                    {/*       capture="user"*/}
-                                    {/*       id="customFile"*/}
-                                    {/*       onClick={replaceSur}*/}
-                                    {/*       onChange={(e) => guardarArchivo(e)}*/}
-                                    {/*       required*/}
-                                    {/*/>*/}
+                                            guardarArchivo(e);
+                                            replaceSur(e);
+                                            console.log(arrForSend)
+                                        }
+                                        } style={{width: '138px', marginTop: '10px'}}>{t('feedback_attach')}</button>
 
                                     {
                                         loading
@@ -435,10 +436,14 @@ const Feedback = () => {
                                 </p>
 
 
-                                <Button type='submit' disabled={!surnameInput}>{t('feedback_send')}</Button>
-                                <h6 style={{color: '#21252a', fontWeight: 'bold', margin: '16px 0px'}}>{t('feedback_requirement')}</h6>
+                                <Button type='submit' disabled={!surnameInput || loading}>{t('feedback_send')}</Button>
+                                <h6 style={{
+                                    color: '#21252a',
+                                    fontWeight: 'bold',
+                                    margin: '16px 0px'
+                                }}>{t('feedback_requirement')}</h6>
                                 <h4 className='text-center pt-5' style={{color: '#0d6cfb'}}>{t('feedback_additional')}<a
-                                        href='tel: +380637208050' style={{color: '#0d6cfb'}}>+380637208050</a></h4>
+                                    href='tel: +380637208050' style={{color: '#0d6cfb'}}>+380637208050</a></h4>
 
 
                                 <input style={{display: "none"}}

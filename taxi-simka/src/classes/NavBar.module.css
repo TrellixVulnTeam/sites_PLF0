@@ -31,7 +31,6 @@
 }
 
 .selectCity {
-    /*width: 70px;*/
     background-color: inherit;
     font-size: 24px;
     color: white;
@@ -40,7 +39,6 @@
 }
 
 .selectCity option {
-    /*background-color: black;*/
     color: black;
 }
 

@@ -302,19 +302,7 @@ body {
     }
 }
 
-/*@media screen and (max-height: 485px) and (max-width: 500px){*/
-/*    .bgText {*/
-/*        font-size: 0.8rem;*/
-/*    }*/
-/*    .contacts {*/
-/*        padding:0 5px 0 0 ;*/
-/*        font-size: 1.3rem;*/
-/*        width: 70%;*/
-/*        top: 37%;*/
-/*        left: 15%;*/
-/*    }*/
 
-/*}*/
 
 @media screen and (max-width: 265px) and (max-height: 340px){
     .contacts{

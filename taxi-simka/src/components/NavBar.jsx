@@ -46,8 +46,6 @@ const NavBar = () => {
 
 
 
-
-
     const onChange = (newValue) => {
         setCurrentLang(newValue.value)
         if (newValue.value === 'ru') {
@@ -98,14 +96,6 @@ const NavBar = () => {
                 }
 
 
-
-                {/*<Nav className=' fs-5 ' >*/}
-                {/*    <NavDropdown title={city} >*/}
-                {/*        <NavDropdown.Item onClick={()=>setCity('Васильків')}>Васильків</NavDropdown.Item>*/}
-                {/*        <NavDropdown.Item onClick={()=>setCity('Київ')}>Київ</NavDropdown.Item>*/}
-                {/*        <NavDropdown.Item onClick={()=>setCity('Житомир')}>Житомир</NavDropdown.Item>*/}
-                {/*    </NavDropdown>*/}
-                {/*</Nav>*/}
 
                 <Navbar.Toggle aria-controls='responsive-navbar-nav' className={classes.navbarToggler}/>
                 <Navbar.Collapse id='responsive-navbar-nav'>

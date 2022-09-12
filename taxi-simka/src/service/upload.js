@@ -10,6 +10,7 @@ export function upload(selector, options = {}) {
     const preview = document.createElement('div')
 
     const open = document.createElement('Button')
+    open.setAttribute('type','button')
     open.textContent = i18n.t('upload_js_choise')
 
     if (options.multi) {
