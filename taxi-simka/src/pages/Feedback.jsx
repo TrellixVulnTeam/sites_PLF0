@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Swal from "sweetalert2";
 import emailjs from "emailjs-com";
 import classes from '../classes/Feedback.module.css'
@@ -6,34 +6,61 @@ import '../classes/Feedback.module.css'
 import {delivery, driver, standart, universal} from "../service/tarifs_Vasil";
 import {Button} from "react-bootstrap";
 import InputMask from 'react-input-mask'
-import {upload, last} from "../service/upload.js";
+import {last, upload} from "../service/upload.js";
 import {useTranslation} from "react-i18next";
 import i18n from "i18next";
+import 'firebase/compat/storage'
+import firebase from "firebase/compat/app";
+import {click} from "@testing-library/user-event/dist/click";
 
 const SERVICE_ID = "taxi-simka";
 const TEMPLATE_ID = "template_a0wm0pl";
 const USER_ID = "iNXJWN7ii38WJWgYa";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDtNWa3H4JoPvK7BSo0n_Ya8tfemOMtJ7Q",
+    authDomain: "fe-upload-fe032.firebaseapp.com",
+    projectId: "fe-upload-fe032",
+    storageBucket: "fe-upload-fe032.appspot.com",
+    messagingSenderId: "193242940421",
+    appId: "1:193242940421:web:65378d31e448f0ea94c86c"
+};
+
+let checkSur = "Не указали фамилию";
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig)
+const storage = firebase.storage()
+
 setTimeout(() => upload('#file', {
     multi: true,
-    accept: ['.png', '.jpg', '.jpeg', '.gif']
+    accept: ['.png', '.jpg', '.jpeg', '.gif'],
+    require: true,
+    onUpload(last) {
+        last.forEach(file => {
+            const ref = storage.ref(`photo/${checkSur}/${file.name}`)
+            const task = ref.put(file)
+
+            task.on('state_changed', snapshot => {
+            }, error => {
+                console.log(error)
+            }, () => {
+            })
+        })
+    }
 }), 1000)
 
 const Feedback = () => {
 
         const {t} = useTranslation()
 
-        const [arrForSend, setArrForSend] = useState(last)
         const [currentCar, setCurrentCar] = useState('');
         const [surnameInput, setSurnameInput] = useState('');
-        const [urlOnFolder, setUrlOnFolder] = useState('');
-        const [isDisableButton, setIsDisableButton] = useState(true)
+        const [urlOnFolder, setUrlOnFolder] = useState('https://console.firebase.google.com/project/fe-upload-fe032/storage/fe-upload-fe032.appspot.com/files/~2Fphoto');
+        const [deactiveSubmit, setDeactivateSubmit] = useState(false)
         const [appState, changeAppState] = useState({
             activeObject: null,
             objects: [{id: 1}, {id: 2}, {id: 3}, {id: 4}]
         });
-
-
-        const [loading, setLoading] = useState(false)
         const screenW = window.screen.width;
         const colors = [
             "#000000",
@@ -62,6 +89,7 @@ const Feedback = () => {
         const [current, setCurrent] = useState('');
         const [hidden, setHidden] = useState(true)
 
+
         function toogleActive(index) {
             changeAppState({...appState, activeObject: appState.objects[index]});
         }
@@ -74,65 +102,62 @@ const Feedback = () => {
             }
         }
 
-        function replaceSur() {
-            if (!surnameInput) {
-                setSurnameInput('Без прізвища')
-            }
-        }
+        useEffect(() => {
+            checkSur = surnameInput
+        }, [surnameInput])
 
-        function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
 
-        async function guardarArchivo(e) {
-            setLoading(true)
-            let files = arrForSend
-            for (let i = 0; i < files.length; i++) {
-                if (i === 1) {
-                    await sleep(2000)
-                }
-                console.log(files)
-                let file = files[i] //the file
-                let reader = new FileReader() //this for convert to Base64
-                reader.readAsDataURL(files[i]) //start conversion...
-                reader.onload = function (e) { //.. once finished..
-                    let rawLog = reader.result.split(',')[1]; //extract only thee file data part
-                    let dataSend = {
-                        dataReq: {
-                            data: rawLog,
-                            name: file.name,
-                            type: file.type,
-                            foldername: surnameInput,
-                        },
-                        fname: "uploadFilesToGoogleDrive"
-                    }; //preapre info to send to API
-                    fetch('https://script.google.com/macros/s/AKfycbyv93E5DtAWx0icgEwUeKFvK2WuyyTZQRzUcjTw2eZkFddXBC3RCHFPAGn5DjXvn8-fiQ/exec',
-                        {
-                            method: "POST",
-                            body: JSON.stringify(dataSend)
-                        }) //send to Api
-                        .then(res => res.json()).then((a) => {
-                        if (files.length - i === 1) {
-                            Swal.fire({
-                                icon: 'success',
-                                title: i18n.t('feedback_success')
-                            })
-                            setUrlOnFolder(a);
-                            setLoading(false)
-                        }
-                    }).catch(e => console.log(e))
-                }
+        const animation = (event) => {
+            event.preventDefault()
+            if (last.length < 13) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Невірна кількість фото',
+                    text: `Для завантаження потрібно мінімум 13 фото.\n Наразі ${last.length} фото`,
+                })
+            } else {
+     //           guardarArchivo()
+                // console.log(last)
+                setDeactivateSubmit(true)
+                let timerInterval
+
+                Swal.fire({
+                    title: 'Завантаження файлів',
+                    timer: 100000,
+                    allowOutsideClick: false,
+                    timerProgressBar: true,
+                    html: 'До завершення залишилось <strong></strong> секунд.<br/><br/>',
+                    didOpen: () => {
+                        Swal.showLoading()
+                        timerInterval = setInterval(() => {
+                            Swal.getHtmlContainer().querySelector('strong')
+                                .textContent = (Swal.getTimerLeft() / 1000)
+                                .toFixed(0)
+                        }, 100)
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval)
+                    }
+                }).then((result) => {
+                    /* Read more about handling dismissals below */
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        handleOnSubmit(event)
+                    }
+                })
             }
         }
 
 
         const handleOnSubmit = (e) => {
-            e.preventDefault();
             emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, USER_ID)
                 .then((result) => {
                     Swal.fire({
                         icon: 'success',
-                        title: i18n.t('feedback_success_mail')
+                        title: i18n.t('feedback_success_mail'),
+                        willClose() {
+                            setSurnameInput('')
+                            window.location.reload()
+                        }
                     })
                 }, (error) => {
                     console.log(error.text);
@@ -151,7 +176,7 @@ const Feedback = () => {
                 <div className='container'>
                     <div className="py-5">
                         <div className={classes.App}>
-                            <form onSubmit={handleOnSubmit} className={classes.myForm}>
+                            <form onSubmit={animation} className={classes.myForm}>
                                 <h1 className='text-center'
                                     style={{color: '#d0d0d9', marginBottom: '64px'}}> {t('feedback_statement')}</h1>
                                 <p className={classes.formGroup}>
@@ -250,7 +275,6 @@ const Feedback = () => {
                                         style={{color: "#da1e1e"}}>*</span></label>
                                     <select className="form-select" name='user_colorAuto'
                                             id='test1'
-                                            aria-label="Оберіть рік випуску"
                                             required
                                             onClick={() => setHidden(false)}
                                     >
@@ -352,6 +376,7 @@ const Feedback = () => {
                                            value={currentCar}
                                            onChange={e => setCurrentCar(e.target.value)}
                                            name='user_typeAuto'
+                                           required
                                     />
 
                                 </div>
@@ -398,31 +423,15 @@ const Feedback = () => {
                                            id="file"
                                            style={{display: 'none'}}
                                            capture="user"
-                                           onChange={() => {
-                                               setArrForSend(last);
-                                               setIsDisableButton(false);
-                                               console.log(arrForSend)
-                                           }}
                                     />
 
-                                    <button
-                                        disabled={isDisableButton === true}
-                                        type='button'
-                                        onClick={(e) => {
-                                            guardarArchivo(e);
-                                            replaceSur(e);
-                                            console.log(arrForSend)
-                                        }
-                                        } style={{width: '138px', marginTop: '10px'}}>{t('feedback_attach')}</button>
+                                    {/*<button*/}
+                                    {/*    type='button'*/}
+                                    {/*    onClick={(e) => {*/}
+                                    {/*        click(document.getElementById('buttonForPhoto'))*/}
+                                    {/*    }*/}
+                                    {/*    } style={{width: '138px', marginTop: '10px'}}>{t('feedback_attach')}</button>*/}
 
-                                    {
-                                        loading
-                                            ?
-                                            <div className="spinner-border mx-2 py-2" role="status">
-                                                <span className="visually-hidden">Loading...</span>
-                                            </div>
-                                            : <div></div>
-                                    }
 
                                 </div>
 
@@ -436,7 +445,25 @@ const Feedback = () => {
                                 </p>
 
 
-                                <Button type='submit' disabled={!surnameInput || loading}>{t('feedback_send')}</Button>
+                                <Button type='submit'
+                                        disabled={!surnameInput || deactiveSubmit}
+                                        onClick={(e) => {
+                                            if (last.length === 0) {
+                                                alert('Завантажте фото')
+                                            }
+                                            else if (currentCar === ''){
+                                                alert('Виберіть тип авто')
+                                            }
+                                            else if (current === ''){
+                                                alert('Виберіть колір авто')
+                                            }
+                                            else if (last.length > 12){
+                                                click(document.getElementById('buttonForPhoto'))
+                                            }
+                                        }}
+                                >{t('feedback_send')}</Button>
+
+                                {/*<button type='submit' id='theLast' style={{display: "none"}}></button>*/}
                                 <h6 style={{
                                     color: '#21252a',
                                     fontWeight: 'bold',
@@ -448,7 +475,7 @@ const Feedback = () => {
 
                                 <input style={{display: "none"}}
                                        value={urlOnFolder}
-                                       onChange={e => setUrlOnFolder(e.target.value)}
+                                       onChange={() => setUrlOnFolder('https://console.firebase.google.com/project/fe-upload-fe032/storage/fe-upload-fe032.appspot.com/files/~2Fphoto')}
                                        name='user_photo'
                                 />
 
